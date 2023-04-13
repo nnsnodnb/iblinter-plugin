@@ -14,7 +14,7 @@ let package = Package(
     targets: [
         .binaryTarget(
             name: "IBLinterBinary",
-            path: "IBLinter.artifactbundle.zip"
+            path: "IBLinter.artifactbundle"
         ),
         .plugin(
             name: "IBLinterPlugin",

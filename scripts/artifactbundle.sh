@@ -26,6 +26,3 @@ jq -n \
   --arg path "bin/iblinter" \
   -f ./scripts/info.jq \
   | tee IBLinter.artifactbundle/info.json
-
-zip -r IBLinter.artifactbundle.zip IBLinter.artifactbundle
-rm -rf IBLinter.artifactbundle
