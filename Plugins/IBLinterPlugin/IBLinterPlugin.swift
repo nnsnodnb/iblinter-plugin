@@ -15,9 +15,12 @@ struct IBLinterPlugin: BuildToolPlugin {
                 displayName: "IBLinter",
                 executable: try context.tool(named: "iblinter").path,
                 arguments: [
-                    "lint"
+                    "lint",
+                    "--cache-path",
+                    context.pluginWorkDirectory
                 ],
-                environment: [:]
+                environment: [:],
+                outputFiles: [context.pluginWorkDirectory]
             )
         ]
     }
@@ -33,9 +36,12 @@ extension IBLinterPlugin: XcodeBuildToolPlugin {
                 displayName: "IBLinter",
                 executable: try context.tool(named: "iblinter").path,
                 arguments: [
-                    "lint"
+                    "lint",
+                    "--cache-path",
+                    context.pluginWorkDirectory
                 ],
-                environment: [:]
+                environment: [:],
+                outputFiles: [context.pluginWorkDirectory]
             )
         ]
     }
