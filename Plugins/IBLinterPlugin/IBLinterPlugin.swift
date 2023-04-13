@@ -22,3 +22,22 @@ struct IBLinterPlugin: BuildToolPlugin {
         ]
     }
 }
+
+#if canImport(XcodeProjectPlugin)
+import XcodeProjectPlugin
+
+extension IBLinterPlugin: XcodeBuildToolPlugin {
+    func createBuildCommands(context: XcodePluginContext, target: XcodeTarget) throws -> [Command] {
+        return [
+            .buildCommand(
+                displayName: "Run IBLinter for \(target.displayName)",
+                executable: try context.tool(named: "iblinter").path,
+                arguments: [
+                    "lint"
+                ],
+                environment: [:]
+            )
+        ]
+    }
+}
+#endif
