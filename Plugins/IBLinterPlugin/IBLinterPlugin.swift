@@ -11,13 +11,13 @@ import PackagePlugin
 struct IBLinterPlugin: BuildToolPlugin {
     func createBuildCommands(context: PluginContext, target: Target) async throws -> [Command] {
         return [
-            .prebuildCommand(
+            .buildCommand(
                 displayName: "Run IBLinter for \(target.name)",
                 executable: try context.tool(named: "iblinter").path,
                 arguments: [
                     "lint"
                 ],
-                outputFilesDirectory: context.pluginWorkDirectory
+                environment: [:]
             )
         ]
     }
@@ -29,14 +29,13 @@ import XcodeProjectPlugin
 extension IBLinterPlugin: XcodeBuildToolPlugin {
     func createBuildCommands(context: XcodePluginContext, target: XcodeTarget) throws -> [Command] {
         return [
-            .prebuildCommand(
+            .buildCommand(
                 displayName: "Run IBLinter for \(target.displayName)",
                 executable: try context.tool(named: "iblinter").path,
                 arguments: [
                     "lint"
                 ],
-                environment: [:],
-                outputFilesDirectory: context.pluginWorkDirectory
+                environment: [:]
             )
         ]
     }
