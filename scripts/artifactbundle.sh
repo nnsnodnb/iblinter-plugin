@@ -24,7 +24,7 @@ rm -rf "${iblinter}"
 jq -n \
   --arg version "${version}" \
   --arg type "executable" \
-  --arg path "IBLinter.artifactbundle/iblinter-${version}-macos/bin/iblinter" \
+  --arg path "iblinter-${version}-macos/bin/iblinter" \
   -f ./scripts/info.jq \
   | tee IBLinter.artifactbundle/info.json
 

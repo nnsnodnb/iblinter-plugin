@@ -1,7 +1,7 @@
 {
     "schemaVersion": "1.0",
     "artifacts": {
-        "iblinetr": {
+        "iblinter": {
             "version": $version,
             "type": $type,
             "variants": [
