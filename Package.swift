@@ -5,6 +5,9 @@ import PackageDescription
 
 let package = Package(
     name: "IBLinterPlugin",
+    platforms: [
+        .macOS(.v10_13)
+    ],
     products: [
         .plugin(
             name: "IBLinterPlugin",
