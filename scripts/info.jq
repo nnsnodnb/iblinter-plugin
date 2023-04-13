@@ -7,7 +7,7 @@
       "variants": [
         {
           "path": $path,
-          "supportedTriples": ["x86_64-apple-macosx"]
+          "supportedTriples": ["x86_64-apple-macosx", "arm64-apple-macosx"]
         }
       ]
     }

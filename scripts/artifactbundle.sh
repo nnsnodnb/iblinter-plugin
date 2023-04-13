@@ -6,12 +6,19 @@ rm -rf IBLinter.artifactbundle.zip IBLinter.artifactbundle
 
 version=$(cat scripts/iblinter_version.txt)
 
-curl -OL "https://github.com/IBDecodable/IBLinter/releases/download/${version}/portable_iblinter.zip"
-unzip portable_iblinter.zip && rm portable_iblinter.zip
+iblinter=$(mktemp -d)
+git clone -b "${version}" --depth 1 https://github.com/IBDecodable/IBLinter.git "${iblinter}"
+cd "${iblinter}"
+swift build --disable-sandbox -c release --static-swift-stdlib --arch arm64 --arch x86_64
+BIN_PATH=$(swift build --show-bin-path -c release --arch x86_64 --arch arm64)/iblinter
 
-mkdir -p IBLinter.artifactbundle
-mv LICENSE IBLinter.artifactbundle
-mv bin IBLinter.artifactbundle
+cd -
+
+mkdir -p IBLinter.artifactbundle/bin
+cp "${iblinter}/LICENSE" IBLinter.artifactbundle
+cp "${BIN_PATH}" IBLinter.artifactbundle/bin/iblinter
+
+rm -rf "${iblinter}"
 
 jq -n \
   --arg version "${version}" \
