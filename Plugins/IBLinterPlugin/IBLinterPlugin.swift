@@ -12,7 +12,7 @@ struct IBLinterPlugin: BuildToolPlugin {
     func createBuildCommands(context: PluginContext, target: Target) async throws -> [Command] {
         return [
             .buildCommand(
-                displayName: "Run IBLinter for \(target.name)",
+                displayName: "IBLinter",
                 executable: try context.tool(named: "iblinter").path,
                 arguments: [
                     "lint"
@@ -30,7 +30,7 @@ extension IBLinterPlugin: XcodeBuildToolPlugin {
     func createBuildCommands(context: XcodePluginContext, target: XcodeTarget) throws -> [Command] {
         return [
             .buildCommand(
-                displayName: "Run IBLinter for \(target.displayName)",
+                displayName: "IBLinter",
                 executable: try context.tool(named: "iblinter").path,
                 arguments: [
                     "lint"

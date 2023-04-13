@@ -16,14 +16,14 @@ let package = Package(
     ],
     targets: [
         .binaryTarget(
-            name: "IBLinterBinary",
+            name: "iblinter",
             path: "IBLinter.artifactbundle.zip"
         ),
         .plugin(
             name: "IBLinterPlugin",
             capability: .buildTool(),
             dependencies: [
-                "IBLinterBinary"
+                "iblinter"
             ]
         ),
     ]
