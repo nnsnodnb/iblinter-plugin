@@ -14,9 +14,10 @@ BIN_PATH=$(swift build --show-bin-path -c release --arch x86_64 --arch arm64)/ib
 
 cd -
 
-mkdir -p IBLinter.artifactbundle/bin
+mkdir -p IBLinter.artifactbundle
 cp "${iblinter}/LICENSE" IBLinter.artifactbundle
-cp "${BIN_PATH}" IBLinter.artifactbundle/bin/iblinter
+mkdir -p "IBLinter.artifactbundle/iblinter-${version}-macos/bin"
+cp "${BIN_PATH}" "IBLinter.artifactbundle/iblinter-${version}-macos/bin"
 
 rm -rf "${iblinter}"
 
