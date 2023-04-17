@@ -4,7 +4,7 @@
 
 ### Xcode project
 
-In Project Settings, on the tab "Package Dependencies", click "+" and add `https://github.com/nnsnodnb/iblinter-plugin.git".  
+In Project Settings, on the tab "Package Dependencies", click "+" and add `https://github.com/nnsnodnb/iblinter-plugin.git`.  
 Click "Add Package".
 
 ## License
