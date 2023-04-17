@@ -17,7 +17,8 @@ let package = Package(
     targets: [
         .binaryTarget(
             name: "iblinter",
-            path: "IBLinter.artifactbundle.zip"
+            url: "https://github.com/nnsnodnb/iblinter-plugin/releases/download/0.5.0/IBLinter.artifactbundle.zip",
+            checksum: "bbda7a1f3966636428f70f50da4327cafa32c0276f4c6081cfae9f3c6731cc2b"
         ),
         .plugin(
             name: "IBLinterPlugin",
