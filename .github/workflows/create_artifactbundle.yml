@@ -1,0 +1,30 @@
+name: Create artifactbundle
+
+on:
+  workflow_dispatch:
+
+jobs:
+  create_artifactbundle:
+    runs-on: macos-12
+    timeout-minutes: 20
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup Xcode version
+        uses: maxim-lobanov/setup-xcode@v1
+        with:
+          xcode-version: "14.2.0"
+
+      - name: Create artifactbundle
+        run: ./scripts/artifactbundle.sh
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: artifactbundle
+          path: IBLinter.artifactbundle.zip
+          retention-days: 2      
+
+      - name: Compute checksum
+        run: swift package compute-checksum IBLinter.artifactbundle.zip
